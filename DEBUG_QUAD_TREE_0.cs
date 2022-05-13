@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,7 +33,7 @@ public class DEBUG_QUAD_TREE_0 : MonoBehaviour
         #endregion
 
 
-        
+
         DRAW.col = Color.red;
         DRAW.dt = 20f;
 
@@ -44,31 +44,27 @@ public class DEBUG_QUAD_TREE_0 : MonoBehaviour
 
 
 
-        DRAW.dt = Time.deltaTime;
-        while (true)
+
+        //int[] _rect = new int[4] { 20, 20, 50, 50 }; 
+        int[] _rect = this._rect;
+
+        QUAD_NODE _node = new QUAD_NODE()
         {
+            _rect = new int[4] { 0, 0, 255, 255 },
+            _depth = 10
+        };
+        _node.split(_rect);
 
-            //int[] _rect = new int[4] { 20, 20, 50, 50 }; 
-            int[] _rect = this._rect;
-
-            QUAD_NODE _node = new QUAD_NODE()
-            {
-                _rect = new int[4] { 0, 0, 255, 255 },
-                _depth = 10
-            };
-            _node.split(_rect);
-
-            this._node = _node;
+        this._node = _node;
 
 
-            DRAW._QUAD_NODE(_node);
+        DRAW._QUAD_NODE(_node);
 
 
-            DRAW.col = Color.HSVToRGB(0f, 0.5f, 0.8f);
-            DRAW._rect(_rect);
+        DRAW.col = Color.HSVToRGB(0f, 0.5f, 0.8f);
+        DRAW._rect(_rect);
 
-            yield return null;
-        }
+
 
 
 
